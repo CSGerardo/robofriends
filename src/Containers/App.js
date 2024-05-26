@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import CardList from "../Components/CardList";
 import SearchBox from "../Components/SearchBox";
 import Scroll from "../Components/Scroll";
-import ErrorBoundary from "../Components/ErrorBoundary"
-import "./App.css"
+import ErrorBoundary from "../Components/ErrorBoundary";
+import "./App.css";
 
 class App extends Component{
     constructor(){
@@ -11,18 +11,18 @@ class App extends Component{
         this.state={
             robots: [],
             searchfield:""
-        }
+        };
     }
 
     onSearchChange=(event)=>{
         this.setState({searchfield: event.target.value});
-    }
+    };
 
     render(){
         const {robots, searchfield}=this.state;
         const filteredRobots=robots.filter(robot=>{
             return robot.name.toLowerCase().includes(searchfield.toLowerCase());
-        })
+        });
         return !robots.length ?
             <h1>Loading</h1> :
             (
@@ -36,7 +36,7 @@ class App extends Component{
                     </Scroll>
                 </div>
             );
-    }
+    };
 
     componentDidMount(){
         fetch("https://jsonplaceholder.typicode.com/users")
