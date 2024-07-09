@@ -1,4 +1,5 @@
 {
+  "id": "/robofriends/index.html",
   "short_name": "React App",
   "name": "Create React App Sample",
   "icons": [
@@ -18,17 +19,22 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",
   "screenshots": [    
     {
       "src": "./Screen-shot.png",
-        "sizes": "640x320",
+        "sizes": "540x720",
         "type": "image/png",
-        "form_factor": "wide",
-        "label": "Application"
-      }
+        "form_factor": "narrow"
+      },
+      {
+        "src": "./Screen-shot.png",
+          "sizes": "720x540",
+          "type": "image/png",
+          "form_factor": "wide"
+        }
   ]
 }
