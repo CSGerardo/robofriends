@@ -21,5 +21,14 @@
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "screenshots": [    
+    {
+      "src": "./Screen-shot.png",
+        "sizes": "640x320",
+        "type": "image/png",
+        "form_factor": "wide",
+        "label": "Application"
+      }
+  ]
 }
