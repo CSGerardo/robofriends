@@ -1,10 +1,8 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
-import CardList from "../Components/CardList";
-import SearchBox from "../Components/SearchBox";
-import Scroll from "../Components/Scroll";
-import ErrorBoundary from "../Components/ErrorBoundary";
-import Header from "../Components/Header";
+
+import MainPage from "../Components/MainPage";
+
 import "./App.css";
 
 import { requestRobots, setSearchField } from "../actions.js";
@@ -21,49 +19,15 @@ const mapStateToProps=(state)=>{
 const mapDispatchToProps=(dispatch)=>{
     return {
         onSearchChange:(event)=>dispatch(setSearchField(event.target.value)),
-        onRequestRobots:()=>dispatch(requestRobots())
+        onRequestRobots:()=>dispatch(requestRobots(dispatch))
     };
 };
 
 class App extends Component{
-    // constructor(){
-    //     super();
-    //     this.state={
-    //         robots: []
-    //         // searchfield:""
-    //     };
-    // }
-
-    // onSearchChange=(event)=>{
-    //     this.setState({searchfield: event.target.value});
-    // };
-
     render(){
-        const { searchField, onSearchChange, robots, isPending }=this.props;
-        const filteredRobots=robots.filter(robot=>{
-            return robot.name.toLowerCase().includes(searchField.toLowerCase());
-        });
-        return isPending ?
-            <h1>Loading</h1> :
-            (
-                <div className="tc">
-                    <Header/>
-                    <SearchBox searchChange={onSearchChange}/>
-                    <Scroll>
-                        <ErrorBoundary>
-                            <CardList robots={filteredRobots}/>
-                        </ErrorBoundary>
-                    </Scroll>
-                </div>
-            );
+        return <MainPage {...this.props} />
     };
 
-    componentDidMount(){
-        this.props.onRequestRobots();
-        // fetch("https://jsonplaceholder.typicode.com/users")
-        // .then(response=>response.json())
-        // .then(users=>this.setState({robots: users}));
-    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
